@@ -1,0 +1,7 @@
+redis:
+    host: 10.104.245.136
+    port: 6379
+    password: Pug29XYZKFXQ3DhCzbqEbj7
+credentials:
+    user: dummy
+    password: dummy
