@@ -32,14 +32,18 @@ func setUp(t *testing.T) {
 }
 
 func tearDown(t *testing.T) {
-	err := rp.DeleteObject(context.TODO(), testUserName)
-	if err != nil {
-		t.Error(err)
+	resp, err := rp.GetObject(context.TODO(), testUserName)
+	if err == nil && resp != nil {
+		err := rp.DeleteObject(context.TODO(), testUserName)
+		if err != nil {
+			t.Error(err)
+		}
 	}
 }
 
 func TestGeneratingTokenPair(t *testing.T) {
 	setUp(t)
+	tearDown(t)
 
 	t.Run("generating new token pair", func(t *testing.T) {
 		resp, err := rp.GetObject(context.TODO(), testUserName)
