@@ -1,0 +1,16 @@
+1. Why do we persist the refresh tokens on the server? What do we get from this?
+- The refresh token usually has a much longer lifetime than the access token. 
+Therefore, by storing this refresh token on the server, we can win in the usability area, so that the user does not have 
+to go through the whole process of obtaining the JWT token again. 
+Just to mention, I can think of another case where it was necessary to save a refresh token. I encountered this scenario in a project, 
+but it is quite a lot to write and I think we can discuss it in a meeting.
+
+2. Why don’t we persist the JWT tokens on the server? (We send refresh tokens and JWT to the client).
+- There is no reason to store a JWT token on the server because there is no advantage. Life span is usually short and without storing on a server,
+there is no need to revoke the access token itself.
+Also, the JWT token can be validated by checking signature on the client side, so there is no need to talk to any server.
+
+3. What would be the motivation to add refresh tokens to the existing function? 
+-  Not sure I understand this question, but I think the first answer also touches this question. By adding refresh tokens to existing functions,
+we are helping our users to revalidate their access without entering the credentials multiple times. 
+It is an extra step towards a user friendly application.
